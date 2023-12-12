@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
-import { OUTPUT_MESSAGE } from "../constants/message.js";
+import { HINT_MESSAGE, OUTPUT_MESSAGE } from "../constants/message.js";
 
 const OutputView = {
   // 게임 시작 메시지 출력
@@ -12,16 +12,16 @@ const OutputView = {
   },
   // 게임 힌트 메시지 출력
   printNothing() {
-    Console.print(OUTPUT_MESSAGE.none);
+    Console.print(HINT_MESSAGE.none);
   },
   printBall(ball) {
-    Console.print(OUTPUT_MESSAGE.ball(ball));
+    Console.print(HINT_MESSAGE.ball(ball));
   },
   printStrike(strike) {
-    Console.print(OUTPUT_MESSAGE.strike(strike));
+    Console.print(HINT_MESSAGE.strike(strike));
   },
   printBoth(ball, strike) {
-    Console.print(OUTPUT_MESSAGE.both(ball, strike));
+    Console.print(HINT_MESSAGE.both(ball, strike));
   },
 };
 
