@@ -24,3 +24,5 @@ const ERROR_MESSAGE = Object.freeze({
   invalidPattern: "[ERROR] 서로 다른 3개의 숫자를 입력해 주세요.",
   invalidRestart: "[ERROR] 1 또는 2를 입력해 주세요.",
 });
+
+export { INPUT_MESSAGE, OUTPUT_MESSAGE, HINT_MESSAGE, ERROR_MESSAGE };
