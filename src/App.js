@@ -1,7 +1,10 @@
+import Computer from "./domains/Computer.js";
 import InputView from "./views/InputView.js";
 import OutputView from "./views/OutPutView.js";
 
 class App {
+  #random;
+
   async play() {
     OutputView.printStart();
     this.#executeStart();
@@ -11,7 +14,7 @@ class App {
 
   // 게임 시작
   #executeStart() {
-    // 컴퓨터 랜덤값 생성
+    this.#random = new Computer().getRandom();
   }
 
   // 게임 진행
