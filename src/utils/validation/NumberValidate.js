@@ -9,7 +9,7 @@ const NumberValidate = {
   },
   // 공백이 포함된 경우
   IncludeSpace(number) {
-    if (number.include(" ")) {
+    if (number.includes(" ")) {
       throw new Error(ERROR_MESSAGE.invalidSpace);
     }
   },
@@ -27,7 +27,7 @@ const NumberValidate = {
   },
   // 0이 포함된 경우
   invalidZero(number) {
-    if (number.include("0")) {
+    if (number.includes("0")) {
       throw new Error(ERROR_MESSAGE.invalidZero);
     }
   },
@@ -35,7 +35,7 @@ const NumberValidate = {
   duplicateNum(number) {
     const set = [...new Set(number)];
 
-    if (number.length !== set) {
+    if (number.length !== set.length) {
       throw new Error(ERROR_MESSAGE.invalidPattern);
     }
   },
