@@ -1,4 +1,5 @@
 import Computer from "./domains/Computer.js";
+import Compare from "./domains/Compare.js";
 import InputView from "./views/InputView.js";
 import OutputView from "./views/OutPutView.js";
 
@@ -15,12 +16,15 @@ class App {
   // 게임 시작
   #executeStart() {
     this.#random = new Computer().getRandom();
+    // console.log("랜덤값", this.#random);
   }
 
   // 게임 진행
   async #executeProgress() {
     const number = await InputView.readNumber();
     // 랜덤값과 입력값 비교
+    const result = new Compare(this.#random, number).getResult();
+    // console.log("결과", result);
     // 힌트 출력
   }
 
