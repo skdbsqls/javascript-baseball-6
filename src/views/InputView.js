@@ -9,7 +9,7 @@ const InputView = {
     const number = await Console.readLineAsync(INPUT_MESSAGE.number);
 
     this.validateNumber(number);
-    return number;
+    return [...number];
   },
   // 사용자 입력값 예외 처리
   validateNumber(number) {
