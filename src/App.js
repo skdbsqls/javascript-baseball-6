@@ -1,11 +1,13 @@
-import Computer from "./domains/Computer.js";
+import Hint from "./domains/Hint.js";
 import Compare from "./domains/Compare.js";
+import Computer from "./domains/Computer.js";
 import InputView from "./views/InputView.js";
 import OutputView from "./views/OutPutView.js";
 
 class App {
   #random;
 
+  #result;
   async play() {
     OutputView.printStart();
     this.#executeStart();
@@ -16,16 +18,22 @@ class App {
   // 게임 시작
   #executeStart() {
     this.#random = new Computer().getRandom();
-    // console.log("랜덤값", this.#random);
+    console.log("랜덤값", this.#random);
   }
 
   // 게임 진행
   async #executeProgress() {
-    const number = await InputView.readNumber();
-    // 랜덤값과 입력값 비교
-    const result = new Compare(this.#random, number).getResult();
-    // console.log("결과", result);
-    // 힌트 출력
+    let playing = true;
+
+    while (playing) {
+      const number = await InputView.readNumber();
+      this.#result = new Compare(this.#random, number).getResult();
+
+      if (this.#result.strike === 3) {
+        new Hint(this.#result).getHint();
+        playing = false;
+      } else new Hint(this.#result).getHint();
+    }
   }
 
   // 게임 종료
