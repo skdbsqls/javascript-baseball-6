@@ -8,8 +8,13 @@ class App {
   #random;
 
   #result;
+
   async play() {
     OutputView.printStart();
+    await this.replay();
+  }
+
+  async replay() {
     this.#executeStart();
     await this.#executeProgress();
     await this.#executeEnd();
@@ -18,7 +23,6 @@ class App {
   // 게임 시작
   #executeStart() {
     this.#random = new Computer().getRandom();
-    console.log("랜덤값", this.#random);
   }
 
   // 게임 진행
@@ -40,7 +44,10 @@ class App {
   async #executeEnd() {
     OutputView.printEnd();
     const restart = await InputView.readRestart();
-    // 재시작 여부에 따른 게임 지속
+
+    if (restart === "1") {
+      await this.replay();
+    } else return;
   }
 }
 
